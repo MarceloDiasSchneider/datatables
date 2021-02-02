@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <table id="table" class="display">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Anni</th>
+                <th>Lingue</th>
+            </tr>
+        </thead>
+    </table>
+    
+<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    /* declaring the function to create instances */
+    function Employee ( nome, anni, lingue) {
+        this.nome = nome;
+        this.anni = anni;
+        this.lingue = lingue;
+    };
+    /* loading file json from the server side */
+    $.getJSON("data.json",function(json){
+        /* declaring variable */
+        let employers = []
+        json.forEach(newEmployee)
+        /* creating each instances from json result */
+        function newEmployee(item) {
+            employers.push( new Employee( item['nome'], item['anni'], item['lingue']) )
+        }
+        /* crating the table */
+        $('#table').DataTable( {
+            data: employers,
+            columns: [
+                { data: 'nome' },
+                { data: 'anni' },
+                { data: 'lingue' }
+            ]
+        } );
+    })
+</script>
+</body>
+</html>
