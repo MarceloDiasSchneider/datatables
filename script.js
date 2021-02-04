@@ -23,7 +23,6 @@ $(document).ready(function() {
             paging: true,
             processing: true,
             lengthChange: true,
-            buttons: true,
             scrollX: "1200",
             scrollY: false,
             scrollCollapse: false,
@@ -37,6 +36,7 @@ $(document).ready(function() {
             "dom": '<"top"Blf>rt<"bottom"ipP>',
 
             /* insert a bottun */
+            buttons: true,
             buttons: [
                 {
                     extend: 'collection',
