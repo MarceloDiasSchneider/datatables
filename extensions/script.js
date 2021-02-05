@@ -20,8 +20,29 @@ $(document).ready(function() {
             lengthChange: true,
             scrollX: true,
             scrollY: '',
-            scrollCollapse: false,
-            buttons: true,
+            scrollCollapse: true,
+            colReorder: true,
+            select: true,
+            // fixedHeader: true,
+            fixedHeader: {
+                footer: false
+            },
+            // autoFill: true,
+            keys: {
+                columns: ':not(:first-child)',
+                blurable: true,
+                className: 'text-warning bg-secondary',
+                clipboard: true,
+
+            },
+            fixedColumns: {
+                leftColumns: 1
+            },
+            searchPanes: {
+                // cascadePanes: true,
+                viewTotal: true,
+            },
+            // buttons: true,
             buttons: [
                 {
                     extend: 'collection',
@@ -63,6 +84,18 @@ $(document).ready(function() {
                 'copy',
                 'print',
                 'csv',
+                // {
+                //     buttons: [
+                //         'selectAll',
+                //         'selectNone'
+                //     ],
+                //     language: {
+                //         buttons: {
+                //             selectAll: "Select all items",
+                //             selectNone: "Select none"
+                //         }
+                //     }
+                // }
             ],
         } );
     } );
