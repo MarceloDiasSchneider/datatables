@@ -1,8 +1,7 @@
 $(document).ready(function() {
     $.getJSON("dataTables.json",function(json){
         $('#example').DataTable({
-            // "dom": '<"top"Blf>rt<"bottom"ipP>',
-            "dom": 'BlftiprP',
+            "dom": 'QBlftiprPR',
             data: json,
             columns: [
                 { data: 'name' },
@@ -23,11 +22,10 @@ $(document).ready(function() {
             scrollCollapse: true,
             colReorder: true,
             select: true,
-            // fixedHeader: true,
             fixedHeader: {
+                header: false,
                 footer: false
             },
-            // autoFill: true,
             keys: {
                 columns: ':not(:first-child)',
                 blurable: true,
@@ -39,10 +37,18 @@ $(document).ready(function() {
                 leftColumns: 1
             },
             searchPanes: {
-                // cascadePanes: true,
-                viewTotal: true,
+                cascadePanes: true,
+                // viewTotal: true,
+                layout: 'columns-3',
             },
-            // buttons: true,
+            columnDefs: [
+                {
+                    searchPanes: {
+                        show: true
+                    },
+                    targets: [1, 2, 3, 4, 5, 6]
+                }
+            ],
             buttons: [
                 {
                     extend: 'collection',
@@ -84,18 +90,7 @@ $(document).ready(function() {
                 'copy',
                 'print',
                 'csv',
-                // {
-                //     buttons: [
-                //         'selectAll',
-                //         'selectNone'
-                //     ],
-                //     language: {
-                //         buttons: {
-                //             selectAll: "Select all items",
-                //             selectNone: "Select none"
-                //         }
-                //     }
-                // }
+                // 'searchPanes'
             ],
         } );
     } );
